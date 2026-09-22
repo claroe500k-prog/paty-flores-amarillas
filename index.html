@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Prueba de música</title>
+<style>
+body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
+font-family:system-ui,sans-serif;background:#fff8df;text-align:center}
+.box{background:white;padding:35px 25px;border-radius:25px;box-shadow:0 10px 40px #0002}
+h1{font-size:28px}button{border:0;border-radius:30px;padding:16px 28px;background:#e5ad24;color:white;font-size:18px;font-weight:bold}
+#estado{margin-top:18px;color:#555}
+</style>
+</head>
+<body>
+<div class="box">
+<div style="font-size:60px">🌻</div>
+<h1>Prueba de música</h1>
+<p>Flores Amarillas</p>
+<button id="play">▶️ REPRODUCIR</button>
+<p id="estado">Toca el botón para comprobar el audio.</p>
+<audio id="audio" preload="auto" controls style="margin-top:15px;width:100%">
+<source src="flores_amarillas.mp3" type="audio/mpeg">
+Tu navegador no puede reproducir este audio.
+</audio>
+</div>
+<script>
+const a=document.getElementById('audio');
+const b=document.getElementById('play');
+const e=document.getElementById('estado');
+b.addEventListener('click',async()=>{
+ try{
+   await a.play();
+   e.textContent='✅ La música está reproduciéndose.';
+   b.textContent='⏸️ PAUSAR';
+ }catch(err){
+   e.textContent='❌ El navegador no pudo iniciar el audio. Usa el reproductor de abajo.';
+ }
+});
+</script>
+</body>
+</html>
